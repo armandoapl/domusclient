@@ -1,0 +1,98 @@
+<header class="bg-primary text-white">
+      <div class="container">
+        
+        <div style="display: flex;">
+            <a routerLink='/' class="nav-link px-2  text-white">ConectInmb</a>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <ng-container *ngIf="currentUser$ | async">
+                    <li class="nav-item">
+                        <a 
+                            class="nav-link px-2 ">
+                            Perfil</a>
+                    </li>
+    
+                    <li>
+                        <a 
+                            class="nav-link px-2" 
+                            routerLink='/agents'
+                            routerLinkActive='text-white' >
+                            Contactos</a>
+                    </li>
+    
+                    <li>
+                        <a 
+                            class="nav-link px-2"  
+                            routerLink='/lists'
+                            routerLinkActive='text-white' >
+                            Agentes</a>
+                    </li>
+    
+                    <li>
+                        <a  
+                            class="nav-link px-2" 
+                            routerLink='/messages'
+                            routerLinkActive='text-white' >Messages</a>
+                    </li>
+    
+                    <li>
+                        <a href="#" class="nav-link px-2" (click)="logOut()">Logout</a>
+                    </li>
+                </ng-container>
+                <li>
+                    <a  
+                        class="nav-link px-2" 
+                        routerLink='/errors'
+                        routerLinkActive='text-white' >Errors</a>
+                </li>
+            </ul>
+        </div>
+        
+            
+        <div class="btn-group" dropdown *ngIf="(currentUser$ | async) as user" >
+            <a
+                id="button-basic"
+                dropdownToggle
+                type="button"
+                class="btn btn-ptimary dropdown-toggle text-light" 
+                aria-controls="dropdown-basic">
+                Bienvenido {{user.userName | titlecase}}<span class="caret"></span>
+            </a>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" >
+                <li role="menuitem" class="dropdown-item">
+                    <a href="#" class="dropdown-item" >Edit Profile</a>
+                </li>
+                <li class="divider dropdown-divider"></li>
+                <li role="menuitem" class="dropdown-item">
+                    <a   href="#" class="dropdown-item" (click)="logOut()">logOut</a>
+                </li>
+            </ul>
+        </div>
+
+        <form #loginForm="ngForm" (ngSubmit)="login()" 
+            autocomplete="off"
+            *ngIf="!(currentUser$ | async)">
+            <input 
+                name="username"
+                [(ngModel)] = "model.username"
+                type="text" 
+                class="form-control form-control-dark" 
+                placeholder="username..." 
+                aria-label="username">
+            
+                <input 
+                name="password"
+                [(ngModel)] = "model.password"
+                type="password" 
+                class="form-control form-control-dark" 
+                placeholder="password..." 
+                aria-label="password">
+            
+            <div class="text-end buttons">
+                <button type="submit" class="btn btn-outline-light me-2">Login</button>
+
+                <button type="button" class="btn btn-warning">Sign-up</button>
+            </div>
+        </form>
+        
+      </div>
+  </header>

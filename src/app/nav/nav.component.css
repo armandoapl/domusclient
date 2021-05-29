@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 80px;
+}
+
+form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.buttons{
+    display: flex;
+}
+
+button {
+    margin: .5vw;
+}
+
+input {
+    margin: 0 5px;
+}
+
+ul a {
+    color:grey;
+} 
+
