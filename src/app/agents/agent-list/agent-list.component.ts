@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Agent } from '../../_models/agent';
+import { AgentsService } from 'src/app/services/agents.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-agent-list',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgentListComponent implements OnInit {
 
-  constructor() { }
+  agents$: Observable<Agent[]>;
+
+  constructor(private agentService: AgentsService) { }
 
   ngOnInit(): void {
+    this.agents$ = this.agentService.getAgents();
   }
+
 
 }

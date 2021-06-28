@@ -13,37 +13,32 @@
     
                     <li>
                         <a 
-                            class="nav-link px-2" 
+                            class="nav-link px-2"  
                             routerLink='/agents'
                             routerLinkActive='text-white' >
-                            Contactos</a>
-                    </li>
-    
-                    <li>
-                        <a 
-                            class="nav-link px-2"  
-                            routerLink='/lists'
-                            routerLinkActive='text-white' >
                             Agentes</a>
+                    </li>
+
+                    <li>
+                        <a  
+                            class="nav-link px-2" 
+                            routerLink='/properties'
+                            routerLinkActive='text-white' >Inmuebles</a>
                     </li>
     
                     <li>
                         <a  
                             class="nav-link px-2" 
                             routerLink='/messages'
-                            routerLinkActive='text-white' >Messages</a>
-                    </li>
-    
-                    <li>
-                        <a href="#" class="nav-link px-2" (click)="logOut()">Logout</a>
+                            routerLinkActive='text-white' >Mensajes</a>
                     </li>
                 </ng-container>
-                <li>
+                <!-- <li>
                     <a  
                         class="nav-link px-2" 
                         routerLink='/errors'
                         routerLinkActive='text-white' >Errors</a>
-                </li>
+                </li> -->
             </ul>
         </div>
         
@@ -58,13 +53,16 @@
                 Bienvenido {{user.userName | titlecase}}<span class="caret"></span>
             </a>
             <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" >
+
                 <li role="menuitem" class="dropdown-item">
-                    <a href="#" class="dropdown-item" >Edit Profile</a>
+                    <a routerLink='/agent/edit' class="dropdown-item" >Editar Perfil</a>
                 </li>
+
                 <li class="divider dropdown-divider"></li>
                 <li role="menuitem" class="dropdown-item">
                     <a   href="#" class="dropdown-item" (click)="logOut()">logOut</a>
                 </li>
+                
             </ul>
         </div>
 

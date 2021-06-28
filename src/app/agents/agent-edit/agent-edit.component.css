@@ -1,0 +1,125 @@
+.grid-container{
+
+    padding: 3vh 5vw;
+    min-height: 120vh;
+
+    display: grid;
+    gap:10px;
+
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto minMax(600px, auto) auto;
+    grid-template-areas: 
+    "flex-container flex-container"
+    "second-row  second-row"
+    "information information";
+}
+
+
+.second-row{
+    grid-area: second-row;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+    padding: 5px;
+
+    border: 1px solid black;
+}
+
+.information{
+    grid-area: information;
+    /* background-color: lightgreen; */
+}
+.introduction{
+    grid-area: introduction;
+    /* background-color: lightskyblue; */
+}
+
+
+.list-group{
+    height: 100% ;
+}
+
+.introduction{
+    padding: 10%;
+}
+
+
+
+/** the image card part starts here****************************/
+.card{
+
+    flex-basis: 35%;
+
+    display: flex;
+    align-items: center;
+    padding: 15px 0 0 0;
+    background-color: whitesmoke;
+}
+
+.img-thumbnail{
+    max-width: 85%;
+    height: 85%;
+}
+
+.grid-body{
+    padding:0;
+}
+
+.card-footer{
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    border-top: none;
+    
+    background-color: whitesmoke;
+}
+
+.footer-card-item{
+    margin: 0 5px;
+}
+/** the image card part finishes here*************************/
+
+.introduction{
+    flex-basis: 60%;
+}
+
+
+.information{
+    padding: 0;
+
+}
+.information .list-group{
+    margin: 0;
+    padding: 0;
+    /* background-color: lightgreen; */
+}
+
+/*flex of the notification*/
+.flex-container{
+    grid-area: "flex-container";
+}
+
+
+
+/*flex of the notification*/
+
+.changes-alert{
+    display: flex;
+    justify-content: space-between;
+}
+
+.title{
+    flex-basis: 30%;
+}
+
+.info-text{
+    flex-basis: 70%;
+    display: flex;
+}
+
+
+
+
+
+

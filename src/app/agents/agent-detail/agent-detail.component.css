@@ -1,0 +1,115 @@
+.grid-container{
+    padding: 3vh 5vw;
+    min-height: 120vh;
+
+    display: grid;
+    gap:10px;
+    grid-template-areas: 
+    "image"
+    "information"
+    "introduction"
+    "footer";
+}
+
+.image{
+    grid-area: image;
+    /* background-color: rosybrown; */
+}
+.information{
+    grid-area: information;
+    /* background-color: lightgreen; */
+}
+.introduction{
+    grid-area: introduction;
+    /* background-color: lightskyblue; */
+}
+.footer{
+    grid-area:footer;
+    background-color: lightslategray;
+}
+
+
+@media (min-width: 769px){
+
+    /* .grid-container{
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 600px auto auto 100px;
+        grid-template-areas: 
+        "information  image"
+        "introduction introduction"
+        "introduction introduction"
+        "footer       footer";
+    } */
+
+    .grid-container{
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: minMax(600px, auto) auto auto 600px;
+        grid-template-areas: 
+        "introduction  image"
+        "information information"
+        "information information"
+        "footer       footer";
+    }
+
+
+    .list-group{
+        height: 100% ;
+    }
+
+    .introduction{
+        padding: 10%;
+    }
+    
+    /** the image card part starts here****************************/
+    .card{
+        display: flex;
+        align-items: center;
+        padding: 15px 0 0 0;
+    }
+
+    .img-thumbnail{
+        max-width: 85%;
+        height: 85%;
+    }
+
+    .grid-body{
+        padding:0;
+    }
+
+    .card-footer{
+        padding: 10px 15px;
+        display: flex;
+        justify-content: center;
+        border-top: none;
+        
+        background-color: whitesmoke;
+    }
+
+    .footer-card-item{
+        margin: 0 5px;
+    }
+    /** the image card part finishes here*************************/
+
+
+    .information{
+        padding: 0;
+    }
+    .information .list-group{
+        margin: 0;
+        padding: 0;
+        /* background-color: lightgreen; */
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,1 +1,124 @@
-<p>agent-detail works!</p>
+<div *ngIf="agent" class="grid-container">
+    <div class="information">
+        <ul class="list-group-flush">
+            <li class="list-group-item">
+                <strong>Nombre Completo:</strong>
+                {{agent.userName}}
+            </li>
+            
+
+            <li class="list-group-item">
+                <strong>Cedula (DNI):</strong>
+                {{agent.legalId}}
+            </li>
+
+            <li class="list-group-item">
+                <strong>Pais: </strong>
+                {{agent.country}}
+            </li>
+            <li class="list-group-item">
+                <strong>Ciudad: </strong>
+                {{agent.city}}
+            </li>
+            <li class="list-group-item">
+                <strong>Edad:</strong>
+                {{agent.age}}
+            </li>
+
+            <li class="list-group-item">
+                <strong>Ultima Vez por aqui: </strong>
+                {{agent.lastActive}}
+            </li>
+
+            <li class="list-group-item">
+                <strong>En el sistema desde: </strong>
+                {{agent.createdAt}}
+            </li>
+        </ul>
+    </div>
+
+    <div class="image"> 
+        <div class="card">
+            <img  
+                class="card-img-top img-thumbnail" 
+                src="{{agent.photoUrl || '../../assets/user.png'}}" 
+                alt="{{agent.knownAs}}">
+            <div class="card-body text-center">
+                <strong >Alias: </strong>
+                <p>{{agent.knownAs}}</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary footer-card-item">Voto de Confianza</button>
+                <button class="btn btn-success footer-card-item">Mensaje</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="introduction">
+        <strong>introducion: </strong>
+        <p>
+            {{agent.introduction}}
+        </p>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="footer"> <!--******************************************************************************* FOOTER ***************************************************************-->
+        
+            
+        <carousel class="myCarrousel">
+
+            <slide >
+                <img src="../../../assets/property 40.jpg" alt="second slide" style="display: block; width: 100%;">
+
+            </slide>
+            <slide>
+              <img src="../../../assets/property 37.jpg" alt="second slide" style="display: block; width: 100%;">
+            </slide>
+            <slide>
+              <img src="../../../assets/property 10.jpg" alt="third slide" style="display: block; width: 100%;">
+            </slide>
+
+
+          </carousel>
+
+
+
+
+    </div>  <!--******************************************************************************* FOOTER ***************************************************************-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

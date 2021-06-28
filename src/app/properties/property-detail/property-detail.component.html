@@ -1,0 +1,25 @@
+<div class="row" *ngIf="property">
+    <div class="col-4">
+        <div class="card">
+            <img src="../../../assets/property 10.jpg" alt="{{property.title}}" class="card-img-top img-thumbnail">
+            <div class="card-body">
+                <div class="card-body">
+                    <div>
+                        <strong>Pais y Ciudad: </strong>
+                        {{property.country}} <strong>|</strong>{{property.city}}
+                    </div>
+                    <div>
+                        <strong>Ubicacion: </strong>
+                        {{property.address}}
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="btn-group d-flex">
+                        <button class="btn btn-success">mensajear agente encargado</button>
+                        <button class="btn btn-info">ver otras propiedades del mismo agente</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

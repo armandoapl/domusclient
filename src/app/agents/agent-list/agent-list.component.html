@@ -1,1 +1,5 @@
-<p>agent-list works!</p>
+<div class="row">
+    <div *ngFor="let agent of agents$ | async" class="col-2 m-3">
+        <app-agent-card [agent]="agent"></app-agent-card>
+    </div>
+</div>

@@ -13,16 +13,24 @@ import {FormsModule} from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
-import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
-import { AgentListComponent } from './agents/agent-list/agent-list.component';
-import { AgentDetailComponent } from './agents/agent-detail/agent-detail.component';
 import { ToastrModule } from 'ngx-toastr';
-import { BrowserTestingModule } from '@angular/platform-browser/testing';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { PropertyDetailComponent } from './properties/property-detail/property-detail.component';
+import { PropertyListComponent } from './properties/property-list/property-list.component';
+import { AgentListComponent } from './agents/agent-list/agent-list.component';
+import { AgentCardComponent } from './agents/agent-card/agent-card.component';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { AgentDetailComponent } from './agents/agent-detail/agent-detail.component';
+import { CarrouselComponent } from './shared/carrousel/carrousel.component';
+import { AgentEditComponent } from './agents/agent-edit/agent-edit.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './_interceptors/loading.interceptor';
+import { PropertyCardComponent } from './properties/property-card/property-card.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +39,18 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     NavComponent,
     HomeComponent,
     RegisterComponent,
-    ListsComponent,
     MessagesComponent,
-    AgentListComponent,
-    AgentDetailComponent,
     TestErrorsComponent,
     NotFoundComponent,
-    ServerErrorComponent, 
+    ServerErrorComponent,
+    PropertyDetailComponent,
+    PropertyListComponent,
+    AgentListComponent,
+    AgentCardComponent,
+    AgentDetailComponent,
+    CarrouselComponent,
+    AgentEditComponent,
+    PropertyCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,11 +63,16 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
       {
         positionClass: "toast-bottom-right",
         timeOut: 1800,
-      }
+      },
     ),
+    CarouselModule.forRoot(),
+    NgxSpinnerModule
+
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
