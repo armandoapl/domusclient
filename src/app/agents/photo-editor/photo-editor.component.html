@@ -2,8 +2,17 @@
     <div class="col-2 card-of-photo" *ngFor ="let photo of agent.photos">
         <img src="{{photo.url}}" alt="" class="img-thumbnail p-1">
         <div class="text-center">
-            <button class="btn btn-sm btn-success mr-4">Principal</button>
-            <button class="btn btn-sm btn-danger mr-2"><i class="fa fa-trash"></i></button>
+            <button 
+            [disabled]="photo.isMain"
+            (click) ="setMainPhoto(photo)"
+            [ngClass] = 'photo.isMain? "btn-success active" : "btn-outline-success"'
+            class="btn btn-sm mr-4">Principal</button>
+
+            <button 
+            [disabled]="photo.isMain"
+            (click)="deletePhoto(photo.id)"
+            class="btn btn-sm btn-danger mr-2">
+            <i class="fa fa-trash"></i></button>
         </div>
     </div>
 </div>

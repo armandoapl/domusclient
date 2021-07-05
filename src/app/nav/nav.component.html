@@ -44,13 +44,18 @@
         
             
         <div class="btn-group" dropdown *ngIf="(currentUser$ | async) as user" >
+            
+            <img src="{{user.photoUrl}}" alt="{{user.userName}}" class="img"/>
+            
             <a
                 id="button-basic"
                 dropdownToggle
                 type="button"
                 class="btn btn-ptimary dropdown-toggle text-light" 
                 aria-controls="dropdown-basic">
-                Bienvenido {{user.userName | titlecase}}<span class="caret"></span>
+                <span *ngIf="user.gender === 'female'">Bienvenida</span> 
+                <span *ngIf="user.gender === 'male'">Bienvenido</span>
+                 {{user.userName | titlecase}}<span class="caret"></span>
             </a>
             <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" >
 

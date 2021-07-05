@@ -2,7 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { take } from 'rxjs/operators';
 import { AccountService } from 'src/app/authentication/account.service';
+import { AgentsService } from 'src/app/services/agents.service';
 import { Agent } from 'src/app/_models/Agent';
+import { Photo } from 'src/app/_models/photo';
 import { User } from 'src/app/_models/User';
 import { environment } from 'src/environments/environment';
 
@@ -20,7 +22,7 @@ export class PhotoEditorComponent implements OnInit {
 
   user: User;
 
-  constructor(private accountService: AccountService){
+  constructor(private accountService: AccountService, private agentService: AgentsService){
     this.accountService.currentUser$
     .pipe(take(1))
     .subscribe(user => this.user = user);
@@ -56,8 +58,27 @@ export class PhotoEditorComponent implements OnInit {
         this.agent.photos.push(photo);
       }
     }
+  }
 
+  setMainPhoto(photo: Photo){
 
+    this.agentService.setMainPhoto(photo.id).subscribe(() => {
+      this.user.photoUrl = photo.url;
+      this.accountService.setCurrentUser(this.user);
+      this.agent.photoUrl = photo.url;
+      this.agent.photos.forEach(p => {
+        if(p.isMain)
+          p.isMain = false;
+        if(p.id === photo.id)
+          p.isMain = true;
+      })
+    })
+  }
+
+  deletePhoto(photoId: number){
+    this.agentService.deletePhoto(photoId).subscribe(() =>{
+      this.agent.photos = this.agent.photos.filter(x => x.id !== photoId);
+    });
   }
 
 }
