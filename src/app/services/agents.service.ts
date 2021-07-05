@@ -4,6 +4,7 @@ import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Agent } from '../_models/Agent';
+import { User } from '../_models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,20 @@ export class AgentsService {
         this.agents[index] = agent;
       })
     );
+  }
+
+  getUserById(id: number) {
+    const userName = this.agents.find(agent => agent.id === id).userName;
+
+    if(userName !== undefined)
+      return of(userName);
+
+    return this.http.get(this.baseUrl + 'users/get-by-id?id=' + id).pipe(
+      map( (user: User)=> {
+        let userNameFromRequest = user.userName;
+        return userNameFromRequest;
+      })
+    )
   }
 
 }

@@ -3,115 +3,116 @@
 <div *ngIf="agent" class="grid-container">
 
 
-<div class="changes-alert">
-    
-    <div *ngIf="EditForm.dirty === true ||EditFormTwo.dirty=== true || EditFormThree.dirty === true"  class="info-text">
-        <div class="alert alert-info">
-            <strong>Informacion: </strong>
-            Tu perfil ha sido modificado si sales sin actualizar los cambios hechos se perderan.
-        </div>
-    </div>
-
-    <div class="title">
-        <h1>Tu perfil</h1>
-    </div>
- </div> 
-
-
-
-
-    <div class="information">
-        <ul class="list-group-flush">
-            <form #EditForm="ngForm" id="editForm"> <!--(ngSubmit)="udateAgent()-->
-                <li class="list-group-item">
-                    <strong>Nombre Completo:</strong>
-                    {{agent.userName}}
-                </li>
-                
-    
-                <li  class="list-group-item">
-                    <strong>Cedula (DNI):</strong>
-                    {{agent.legalId}}
-                </li>
-    
-                <li class="list-group-item">
-                    <label >Pais </label>
-                    <input
-                        [(ngModel)]="agent.country" 
-                        name="country" 
-                        class=" form-control"/>
-                </li>
-                <li class="list-group-item">
-                    <label >Ciudad </label>
-                    <input 
-                        [(ngModel)]="agent.city" 
-                        name="city" 
-                        class=" form-control" />
-                </li>
-                <li class="list-group-item form-control">
-                    <strong>Edad:</strong>
-                    {{agent.age}}
-                </li>
-    
-                <li class="list-group-item">
-                    <strong>Ultima Vez por aqui: </strong>
-                    {{agent.lastActive}}
-                </li>
-    
-                <li class="list-group-item">
-                    <strong>En el sistema desde: </strong>
-                    {{agent.createdAt}}
-                </li>
-            </form>
-            
-        </ul>
-    </div>
-
-    <div class="second-row">
-            <div class="card">
-                <img  
-                    class="card-img-top img-thumbnail" 
-                    src="{{agent.photoUrl || '../../assets/user.png'}}" 
-                    alt="{{agent.knownAs}}">
-                <div class="card-body text-center">
-                    <strong >Alias: </strong>
-
-                    <form #EditFormThree="ngForm" id="editFormThree" >
-                        <input 
-                        [(ngModel)]="agent.knownAs"  
-                        name="knownAs" 
-                        class=" form-control" />
-                    </form>
-                    
-                </div>
-                <div class="card-footer">
-                    <button 
-                        (click)="udateAgent()"                          
-                        class="btn btn-success btn-block"
-                        [disabled]= "EditForm.pristine"
-                        [disabled]= "EditFormTwo.pristine"
-                        [disabled]= "EditFormThree.pristine"
-                        >
-                        Actualizar Cambios</button><!--form="editForm"-->
-                </div>
+    <div class="changes-alert">
+        
+        <div *ngIf="EditForm.dirty === true ||EditFormTwo.dirty=== true || EditFormThree.dirty === true"  class="info-text">
+            <div class="alert alert-info">
+                <strong>Informacion: </strong>
+                Tu perfil ha sido modificado si sales sin actualizar los cambios hechos se perderan.
             </div>
-    
-    
-        <div class="introduction">
-            <strong>introducion: </strong>
-            
-            <form #EditFormTwo="ngForm" id="editFormTwo" >
-                    <textarea 
-                        [(ngModel)]="agent.introduction" 
-                        name="introduction" 
-                        class=" form-control">  
-                    </textarea>
-            </form>
         </div>
-    </div>
-
     
-
-
-
-</div>
+        <div class="title">
+            <h1>Tu perfil</h1>
+        </div>
+     </div> 
+    
+    
+    
+    
+        <div class="information">
+            <ul class="list-group-flush">
+                <form #EditForm="ngForm" id="editForm"> <!--(ngSubmit)="udateAgent()-->
+                    <li class="list-group-item">
+                        <strong>Nombre Completo:</strong>
+                        {{agent.userName}}
+                    </li>
+                    
+        
+                    <li  class="list-group-item">
+                        <strong>Cedula (DNI):</strong>
+                        {{agent.legalId}}
+                    </li>
+        
+                    <li class="list-group-item">
+                        <label >Pais </label>
+                        <input
+                            [(ngModel)]="agent.country" 
+                            name="country" 
+                            class=" form-control"/>
+                    </li>
+                    <li class="list-group-item">
+                        <label >Ciudad </label>
+                        <input 
+                            [(ngModel)]="agent.city" 
+                            name="city" 
+                            class=" form-control" />
+                    </li>
+                    <li class="list-group-item form-control">
+                        <strong>Edad:</strong>
+                        {{agent.age}}
+                    </li>
+        
+                    <li class="list-group-item">
+                        <strong>Ultima Vez por aqui: </strong>
+                        {{agent.lastActive}}
+                    </li>
+        
+                    <li class="list-group-item">
+                        <strong>En el sistema desde: </strong>
+                        {{agent.createdAt}}
+                    </li>
+                </form>
+                
+            </ul>
+        </div>
+    
+        <div class="second-row">
+                <div class="card">
+                    <img  
+                        class="card-img-top img-thumbnail" 
+                        src="{{agent.photoUrl || '../../assets/user.png'}}" 
+                        alt="{{agent.knownAs}}">
+                    <div class="card-body text-center">
+                        <strong >Alias: </strong>
+    
+                        <form #EditFormThree="ngForm" id="editFormThree" >
+                            <input 
+                            [(ngModel)]="agent.knownAs"  
+                            name="knownAs" 
+                            class=" form-control" />
+                        </form>
+                        
+                    </div>
+                    <div class="card-footer">
+                        <button 
+                            (click)="udateAgent()"                          
+                            class="btn btn-success btn-block"
+                            [disabled]= "EditForm.pristine"
+                            [disabled]= "EditFormTwo.pristine"
+                            [disabled]= "EditFormThree.pristine"
+                            >
+                            Actualizar Cambios</button><!--form="editForm"-->
+                    </div>
+                </div>
+        
+        
+            <div class="introduction">
+                <strong>introducion: </strong>
+                
+                <form #EditFormTwo="ngForm" id="editFormTwo" >
+                        <textarea 
+                            [(ngModel)]="agent.introduction" 
+                            name="introduction" 
+                            class=" form-control">  
+                        </textarea>
+                </form>
+            </div>
+        </div>
+        
+        <div class="editphotos">
+            <app-photo-editor [agent]="agent"></app-photo-editor>
+        </div>
+    
+    
+    </div>

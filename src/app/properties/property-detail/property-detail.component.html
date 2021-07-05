@@ -1,25 +1,55 @@
 <div class="row" *ngIf="property">
     <div class="col-4">
-        <div class="card">
+        <div class="card ml-3 mt-3">
             <img src="../../../assets/property 10.jpg" alt="{{property.title}}" class="card-img-top img-thumbnail">
             <div class="card-body">
-                <div class="card-body">
-                    <div>
-                        <strong>Pais y Ciudad: </strong>
-                        {{property.country}} <strong>|</strong>{{property.city}}
-                    </div>
-                    <div>
-                        <strong>Ubicacion: </strong>
-                        {{property.address}}
-                    </div>
+                <div>
+                    <strong>Pais y Ciudad: </strong>
+                    {{property.country}} <strong>|</strong>{{property.city}}
                 </div>
-                <div class="card-footer">
-                    <div class="btn-group d-flex">
-                        <button class="btn btn-success">mensajear agente encargado</button>
-                        <button class="btn btn-info">ver otras propiedades del mismo agente</button>
-                    </div>
+                <div>
+                    <strong>Ubicacion: </strong>
+                    {{property.address}}
                 </div>
             </div>
+
+            <div class="card-footer">
+                <div class="btn-group d-flex">
+                    <button 
+                        class="btn btn-info" 
+                        (click) ="getAgentUsername(property.appUserId)"
+                        
+                        >
+
+                        <i class="fa fa-evelope"> </i>
+
+                        Agente encargado
+
+                    </button>
+                    <!-- (click) ="getAgentUsername({{property.appUserId}})" -->
+                </div>
+                <div class="btn-group d-flex">
+                    <button class="btn btn-success mt-3">
+                        <i class="fa fa-house"></i>
+                        Otras propiedades del mismo agente
+                    </button>
+                </div>
+            </div>
+            
         </div>
+    </div>
+
+
+    <div class="col-8">
+        <tabset class="property-tabset">
+            <tab heading='Acerca de {{property.title}}' class="tab">
+                <h4>Descripcion</h4>
+                <p>{{property.description}}</p>
+            </tab>
+
+            <tab heading='Fotos' class="tab">
+                <p>Photos will go here</p>
+            </tab>
+        </tabset>
     </div>
 </div>

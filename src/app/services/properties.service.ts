@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Property } from '../_models/Property';
 
@@ -15,15 +17,29 @@ export class PropertiesService {
   //   )
   // }
 
+  properties: Property[] = [];
+
   baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
   getProperties() {
-    return this.http.get<Property[]>(this.baseUrl + 'properties');
+    if(this.properties.length > 0)
+      return of(this.properties);
+
+    return this.http.get<Property[]>(this.baseUrl + 'properties').pipe(
+      map(properties => {
+        this.properties = properties;
+        return properties;
+      })
+    );
   }
 
   getProperty(id: number){
+    const property = this.properties.find(property => property.id === id);
+    if(property !== undefined)
+      return of(property);
+
     return this.http.get<Property>(this.baseUrl + 'properties/' +id);
   }
 

@@ -1,0 +1,34 @@
+
+.button-gp{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
+
+.card-of-photo{
+    margin: 15px;
+}
+
+.card-of-photo img {
+    margin-bottom: 10px;
+}
+
+
+
+
+
+ img .img-thumbnail {
+    height: 100px;
+    min-width: 100px!important;
+    margin-bottom: 2px;
+}
+
+.nv-file-over{
+    border: dotted 3px green;
+}
+
+input[tyepe=file] {
+    color: transparent;
+}

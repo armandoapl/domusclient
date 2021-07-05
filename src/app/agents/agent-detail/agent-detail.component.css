@@ -25,7 +25,7 @@
 }
 .footer{
     grid-area:footer;
-    background-color: lightslategray;
+    /* background-color: lightslategray; */
 }
 
 
@@ -99,6 +99,12 @@
         padding: 0;
         /* background-color: lightgreen; */
     }
+
+    .property-tabset{
+        padding: 1vh;
+    }
+
+
 
 
 }

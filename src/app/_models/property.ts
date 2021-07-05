@@ -6,7 +6,7 @@ export interface Property {
         description: string;
         city: string;
         country: string;
-        AppUserId: number;
+        appUserId: number;
         address: string;
         photoUrl: Photo;
         photos: Photo[];

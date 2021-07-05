@@ -7,14 +7,21 @@
     gap:10px;
 
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: auto minMax(600px, auto) auto;
+    grid-template-rows: auto minMax(600px, auto) auto minmax(300px, auto);
     grid-template-areas: 
     "flex-container flex-container"
     "second-row  second-row"
-    "information information";
+    "information information"
+    "editphotos editphotos";
 }
 
-
+.editphotos{
+    /* background-color: aqua; */
+    margin: 10px 0;
+    padding:60px 25px;
+    border: 1px solid black;
+    grid-area: editphotos;
+}
 .second-row{
     grid-area: second-row;
     display: flex;
@@ -22,11 +29,12 @@
     justify-content: space-between;
 
     padding: 5px;
-
+    margin: 10px 0;
     border: 1px solid black;
 }
 
 .information{
+    border: 1px solid black;
     grid-area: information;
     /* background-color: lightgreen; */
 }
@@ -117,8 +125,6 @@
     flex-basis: 70%;
     display: flex;
 }
-
-
 
 
 

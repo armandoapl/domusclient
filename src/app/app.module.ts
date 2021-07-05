@@ -31,6 +31,9 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { PropertyCardComponent } from './properties/property-card/property-card.component';
+import { SharedModule } from './shared/shared/shared.module';
+import { PhotoEditorComponent } from './agents/photo-editor/photo-editor.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,7 @@ import { PropertyCardComponent } from './properties/property-card/property-card.
     CarrouselComponent,
     AgentEditComponent,
     PropertyCardComponent,
+    PhotoEditorComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +70,9 @@ import { PropertyCardComponent } from './properties/property-card/property-card.
       },
     ),
     CarouselModule.forRoot(),
-    NgxSpinnerModule
+    NgxSpinnerModule, 
+    SharedModule,
+    FileUploadModule
 
   ],
   providers: [

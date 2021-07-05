@@ -85,7 +85,7 @@
     <div class="footer"> <!--******************************************************************************* FOOTER ***************************************************************-->
         
             
-        <carousel class="myCarrousel">
+        <!-- <carousel class="myCarrousel">
 
             <slide >
                 <img src="../../../assets/property 40.jpg" alt="second slide" style="display: block; width: 100%;">
@@ -99,7 +99,20 @@
             </slide>
 
 
-          </carousel>
+          </carousel> -->
+
+
+          <div>
+            <tabset class="property-tabset">
+                <tab heading='Fotos de {{agent.userName}}' class="tab">
+                    <p>aqui van las fotos del agente</p>
+                </tab>
+    
+                <tab heading='Propiedades de {{agent.userName}}' class="tab">
+                    <p>aqui va un carrusel de propiedades</p>
+                </tab>
+            </tabset>
+        </div>
 
 
 
