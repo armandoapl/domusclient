@@ -9,7 +9,7 @@ import { UserComponent } from './user/user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
 
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
@@ -34,6 +34,8 @@ import { PropertyCardComponent } from './properties/property-card/property-card.
 import { SharedModule } from './shared/shared/shared.module';
 import { PhotoEditorComponent } from './agents/photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { TextInputComponent } from './_forms/text-input/text-input.component';
+import { DateInputComponent } from './_forms/date-input/date-input.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     AgentEditComponent,
     PropertyCardComponent,
     PhotoEditorComponent,
+    TextInputComponent,
+    DateInputComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +66,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     ToastrModule.forRoot(
       {
