@@ -1,5 +1,6 @@
 import { Component, OnInit, SimpleChange, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { AccountService } from 'src/app/authentication/account.service';
@@ -24,7 +25,8 @@ export class AgentEditComponent implements OnInit, SimpleChange{
 
   constructor(
     private accountService: AccountService, 
-    private agentService: AgentsService, 
+    private agentService: AgentsService,
+    private router: Router,
     private toastr: ToastrService) { 
 
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
@@ -74,10 +76,11 @@ export class AgentEditComponent implements OnInit, SimpleChange{
     // console.log('is form1 dirty? response: '+  this.editForm.dirty);
     // console.log('is form2 dirty? response: '+  this.editFormTwo.dirty);
     // console.log('is form3 dirty? response: '+  this.editFormThree.dirty);
-
-
   }
 
+  uploadProperty(){
+    this.router.navigateByUrl('upload-property/'+this.agent.id);
+  }
 
 
 }

@@ -43,5 +43,35 @@ export class PropertiesService {
     return this.http.get<Property>(this.baseUrl + 'properties/' +id);
   }
 
+  registerProperty(propertyToCreate: Property){
+   
+
+    let objectSent = {
+      Title: propertyToCreate.title,
+      Description: propertyToCreate.description,
+      City: propertyToCreate.city,
+      Country: propertyToCreate.country,
+      AppUserId: propertyToCreate.appUserId,
+      Address: propertyToCreate.address
+
+    };
+
+        console.log('entering the service ', objectSent);
+    return this.http.post<Property>(this.baseUrl + 'properties', objectSent);
+  }
+
+
+  setMainPhoto(photoId: number, propertyId: number){
+
+    console.log('propertyService setp');
+    return this.http.put(this.baseUrl + 'properties/set-main-photo/' + photoId + '/' + propertyId, {});
+  }
+
+  deletePhoto(photoId: number , propertyId: number){
+
+    console.log('propertyService deletep');
+    return this.http.delete(this.baseUrl + 'properties/delete-photo/' + photoId + '/' + propertyId);
+  }
+
 
 }

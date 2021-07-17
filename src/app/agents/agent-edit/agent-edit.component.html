@@ -111,7 +111,29 @@
         </div>
         
         <div class="editphotos">
-            <app-photo-editor [agent]="agent"></app-photo-editor>
+
+            <tabset class="property-tabset">
+
+
+                <tab heading='Propiedades de {{agent.userName}}' class="tab">
+
+                    <p>aqui se suben nuevas propiedades</p>
+                    <button (click)='uploadProperty()'>
+                        <i class="fa fas-plus"></i>
+                    </button>
+                    
+                </tab>
+
+                <tab heading='Fotos de {{agent.userName}}' class="tab">
+                    <app-photo-editor [agent]="agent"></app-photo-editor>
+                </tab>
+
+                
+
+            </tabset>
+
+
+            
         </div>
     
     

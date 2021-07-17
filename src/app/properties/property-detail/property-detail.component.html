@@ -1,7 +1,11 @@
+<!--{{ property.photoUrl ||../../../assets/property 10.jpg}}-->
 <div class="row" *ngIf="property">
     <div class="col-4">
         <div class="card ml-3 mt-3">
-            <img src="../../../assets/property 10.jpg" alt="{{property.title}}" class="card-img-top img-thumbnail">
+            <img 
+                src="{{property.photoUrl || '../../assets/user.png'}}" 
+                alt="{{property.title}}" 
+                class="card-img-top img-thumbnail">
             <div class="card-body">
                 <div>
                     <strong>Pais y Ciudad: </strong>

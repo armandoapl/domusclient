@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row-12" *ngIf="!firstFormSent">
+        <form [formGroup]='newPropertyForm' (ngSubmit)="uploadProperty()" autocomplete="off">
+            <h2 class="text-center text-primary">Registrar una propiedad <i class="fa fa-home"></i></h2>
+            <hr>
+            <div class="form-group">
+                <app-text-input [formControl]='$any(newPropertyForm.controls["title"])' [label]='"Nombre completo"'></app-text-input>
+                
+                <app-text-input [formControl]='$any(newPropertyForm.controls["description"])' [label]='"Descripcion de la propiedad"'></app-text-input>
+                <app-text-input [formControl]='$any(newPropertyForm.controls["city"])' [label]='"Ciudad en la que se encuentra de la propiedad"'></app-text-input>
+                <app-text-input [formControl]='$any(newPropertyForm.controls["country"])' [label]='"Ciudad en el que se encuentra de la propiedad"'></app-text-input>
+                <app-text-input [formControl]='$any(newPropertyForm.controls["address"])' [label]='"Direccion"'></app-text-input>
+    
+                <div class="row" *ngIf="validationErrors.length > 0">
+                    <ul class="text-danger">
+                        <li *ngFor="let error of validationErrors">
+                            {{error}}
+                        </li>
+                    </ul>
+                </div>
+        
+            </div> 
+        
+            <div class="from-group text-center">
+                <button  [disabled]="!newPropertyForm.valid" class="btn btn-success mr-2" type="submit">registrarse</button>   
+                <button class="btn btn-success mr-2" type="button" (click)="cancel()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="row-12" *ngIf="firstFormSent">
+        
+        <app-photo-editor [property]="newProperty" ></app-photo-editor>
+
+        <button (click)="endPhotoUpload()"> Finalizar ! </button>
+    </div>
+    
+</div>

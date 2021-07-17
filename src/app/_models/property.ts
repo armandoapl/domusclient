@@ -8,6 +8,6 @@ export interface Property {
         country: string;
         appUserId: number;
         address: string;
-        photoUrl: Photo;
+        photoUrl: string;
         photos: Photo[];
 }

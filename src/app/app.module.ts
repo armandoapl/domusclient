@@ -36,6 +36,8 @@ import { PhotoEditorComponent } from './agents/photo-editor/photo-editor.compone
 import { FileUploadModule } from 'ng2-file-upload';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
+import { PropertyUploadComponent } from './properties/proprty-upload/property-upload.component';
+import { PropertyPhotoUploadComponent } from './properties/property-photo-upload/property-photo-upload.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
     PhotoEditorComponent,
     TextInputComponent,
     DateInputComponent,
+    PropertyUploadComponent,
+    PropertyPhotoUploadComponent,
   ],
   imports: [
     BrowserModule,
