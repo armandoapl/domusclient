@@ -11,7 +11,6 @@ import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { PropertyDetailComponent } from './properties/property-detail/property-detail.component';
 import { PropertyListComponent } from './properties/property-list/property-list.component';
-import { PropertyPhotoUploadComponent } from './properties/property-photo-upload/property-photo-upload.component';
 import { PropertyUploadComponent } from './properties/proprty-upload/property-upload.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
