@@ -62,8 +62,6 @@ export class PhotoEditorComponent implements OnInit, OnChanges {
   initializeUploader(){
 
     if(this.agent !== undefined){
-      console.log('initializeUploader', this.property);
-
       this.uploader = new FileUploader({
         url: this.baseUrl + 'users/add-photo',
         authToken: 'Bearer '+ this.user.token,
@@ -76,7 +74,6 @@ export class PhotoEditorComponent implements OnInit, OnChanges {
     }
 
     if(this.property !== undefined){
-      console.log('file upload');
       this.uploader = new FileUploader({
       
         url: this.baseUrl + 'properties/add-photo/'+this.property.id,
@@ -119,7 +116,6 @@ export class PhotoEditorComponent implements OnInit, OnChanges {
             let photos: Photo[] = [photo];
             this.property.photos = photos;
             this.photoList = this.property.photos;
-            console.log('Array of photo new prop', this.property.photos);
 
           }else {
             this.property.photos.push(photo);
@@ -139,8 +135,6 @@ export class PhotoEditorComponent implements OnInit, OnChanges {
 
   setMainPhoto(photo: Photo){
 
-
-    console.log('Property value', this.property);
 
     if(this.agent !== undefined){
         this.agentService.setMainPhoto(photo.id).subscribe(() => {

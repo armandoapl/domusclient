@@ -10,9 +10,12 @@ export class PropertyCardComponent implements OnInit {
 
   @Input() property: Property;
   
+  mainPhoto: string;
   constructor() { }
 
   ngOnInit(): void {
+    this.mainPhoto = this.property.photoUrl;
+    console.log('property', this.property);
   }
 
 }

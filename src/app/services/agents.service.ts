@@ -29,10 +29,6 @@ export class AgentsService {
 
   getAgent(userName: string){
 
-
-    console.log('agentsServices');
-
-
     const agent = this.agents.find(agent => agent.userName === userName);
     if(agent !== undefined)
       return of(agent);
@@ -41,10 +37,6 @@ export class AgentsService {
   }
 
   updateAgent(agent: Agent){
-
-
-    console.log('agentsServices getagentS');
-
 
     return this.http.put(this.baseUrl + 'users', agent).pipe(
       map(() => {
@@ -55,11 +47,6 @@ export class AgentsService {
   }
 
   getUserById(id: number) {
-
-
-    console.log('agentsServices getang');
-
-
     const userName = this.agents.find(agent => agent.id === id).userName;
 
     if(userName !== undefined)
@@ -74,17 +61,10 @@ export class AgentsService {
   }
 
   setMainPhoto(photoId: number){
-
-    console.log('agentsServices setp');
-
     return this.http.put(this.baseUrl + 'users/set-main-photo/' + photoId, {});
   }
 
   deletePhoto(photoId: number){
-
-    console.log('agentsServices deletep');
-
-
     return this.http.delete(this.baseUrl + 'users/delete-photo/' + photoId);
   }
 

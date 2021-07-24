@@ -49,8 +49,6 @@ export class PropertyUploadComponent implements OnInit {
   }
 
   uploadProperty(){
-                           //this.activatedRoute.snapshot.paramMap.get('userName')
-    console.log('agentId ',this.activatedRoute.snapshot.paramMap.get('id'));
     const property: Property ={
       id: null,
       title: this.newPropertyForm.get('title').value,
@@ -68,7 +66,6 @@ export class PropertyUploadComponent implements OnInit {
       this.firstFormSent = true;
       }, errorResponse => {
         this.validationErrors = errorResponse;
-        console.log(errorResponse);
       });
   }
 
