@@ -7,6 +7,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { TextInputComponent } from 'src/app/_forms/text-input/text-input.component';
 import { DateInputComponent } from 'src/app/_forms/date-input/date-input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 @NgModule({
   declarations: [
@@ -20,14 +21,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BsDatepickerModule.forRoot(),
     FileUploadModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxGalleryModule
   ], 
   exports: [
     TabsModule,
     BsDatepickerModule,
     PhotoEditorComponent,
     TextInputComponent,
-    DateInputComponent
+    DateInputComponent,
+    NgxGalleryModule
   ]
 })
 export class SharedModule { }
