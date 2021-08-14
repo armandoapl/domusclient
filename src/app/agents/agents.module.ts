@@ -7,6 +7,7 @@ import { AgentListComponent } from './agent-list/agent-list.component';
 import { SharedModule } from '../shared/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { PropertiesModule } from '../properties/properties.module';
 
 
 
@@ -21,7 +22,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     SharedModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    PropertiesModule
   ],
   exports: [
     SharedModule,

@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { Property } from 'src/app/_models/Property';
 
 @Component({
@@ -9,13 +11,16 @@ import { Property } from 'src/app/_models/Property';
 export class PropertyCardComponent implements OnInit {
 
   @Input() property: Property;
-  
-  mainPhoto: string;
-  constructor() { }
+  @Input() isEdit: boolean = false;
 
-  ngOnInit(): void {
-    this.mainPhoto = this.property.photoUrl;
-    console.log('property', this.property);
+  mainPhoto: SafeUrl;
+  constructor(private sanitizer: DomSanitizer) { }
+
+  ngOnInit(): void {    
+  }
+
+  public getSantizeUrl(url : string) {
+    return this.sanitizer.bypassSecurityTrustUrl(url);
   }
 
 }

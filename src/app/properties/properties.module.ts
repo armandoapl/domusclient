@@ -7,6 +7,7 @@ import { PropertyUploadComponent } from './proprty-upload/property-upload.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared/shared.module';
+import { PropertyEditComponent } from './property-edit/property-edit.component';
 
 
 
@@ -16,6 +17,7 @@ import { SharedModule } from '../shared/shared/shared.module';
     PropertyDetailComponent,
     PropertyListComponent,
     PropertyUploadComponent,
+    PropertyEditComponent,
     
   ],
   imports: [
@@ -25,5 +27,6 @@ import { SharedModule } from '../shared/shared/shared.module';
     SharedModule,
     ReactiveFormsModule
   ],
+  exports: [PropertyCardComponent],
 })
 export class PropertiesModule { }

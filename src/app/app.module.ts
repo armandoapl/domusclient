@@ -41,7 +41,7 @@ import { SharedModule } from './shared/shared/shared.module';
     TestErrorsComponent,
     NotFoundComponent,
     ServerErrorComponent,    
-    CarrouselComponent,
+    CarrouselComponent, 
    
   ],
   imports: [

@@ -1,0 +1,79 @@
+<div *ngIf="property" class="container">
+    <form #EditForm="ngForm" id="editForm" (ngSubmit)="updateProperty(1)" class="form-tag">
+        <div class="form-fields">
+            <div class="list">
+                <ul>
+                    <label>
+                        <strong>
+                            Id: {{property.id}}
+                        </strong>
+                    </label>
+                </ul>
+
+                <div class="img-container">
+                    <label> Imagen Principal</label>
+                    <img src="{{property.photoUrl}}" alt="">
+                </div>
+
+                <ul>
+                    <li>
+                        <label> Ciudad  </label>
+                        <input 
+                            type="text"
+                            name="ciudad"
+                            [(ngModel)]="property.city"
+                            >
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <label >País  </label>
+                        <input 
+                            type="text"
+                            name="pais"
+                            [(ngModel)]="property.country"
+                        >
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <label >Ubicacion/ direccion:  </label>
+                        <input 
+                            type="text"
+                            name="direccion"
+                            [(ngModel)]="property.address"
+                        >
+                    </li>
+                </ul>
+            </div>
+            <div class="description-photos">
+
+                <tabset class="property-tabset">
+                    <tab heading='Photos de {{property.title}}' class="tab">
+                        here goes the photos 
+                    </tab>
+    
+                    <tab heading='description de {{property.title}}' class="tab">
+                        <textarea [(ngModel)]="property.description" name="description"cols="30" rows="10"></textarea>
+                    </tab>
+                </tabset>
+                
+            </div>
+        </div>
+
+        <div class="btn-group form-buttons">
+            <button 
+            type="submit"
+            class="btn btn-success btn-block"
+            [disabled]= "EditForm.pristine"
+            >
+            Actualizar Cambios</button>
+            <button class="btn btn-danger" (click)="deleteProperty(property.id)">Delete Property !</button>
+        </div>
+        
+    
+         <!-- (click)="updateProperty()"                           -->
+    
+        
+    </form>
+</div>

@@ -12,7 +12,7 @@ export class AgentCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.agent.photos);
+    console.log('imagen de agente ' + this.agent.id, this.agent.photoUrl);
   }
 
 }

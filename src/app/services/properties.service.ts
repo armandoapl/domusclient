@@ -43,9 +43,16 @@ export class PropertiesService {
     return this.http.get<Property>(this.baseUrl + 'properties/' +id);
   }
 
+  updateProperty(id: number){
+    
+  }
+
+  deleteProperty(photoId: number){
+    return this.http.delete(this.baseUrl+'properties/' +photoId);
+  }
+
   registerProperty(propertyToCreate: Property){
    
-
     let objectSent = {
       Title: propertyToCreate.title,
       Description: propertyToCreate.description,
@@ -55,7 +62,6 @@ export class PropertiesService {
       Address: propertyToCreate.address
 
     };
-
         console.log('entering the service ', objectSent);
     return this.http.post<Property>(this.baseUrl + 'properties', objectSent);
   }

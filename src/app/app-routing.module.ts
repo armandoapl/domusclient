@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { PropertyDetailComponent } from './properties/property-detail/property-detail.component';
+import { PropertyEditComponent } from './properties/property-edit/property-edit.component';
 import { PropertyListComponent } from './properties/property-list/property-list.component';
 import { PropertyUploadComponent } from './properties/proprty-upload/property-upload.component';
 import { AuthGuard } from './_guards/auth.guard';
@@ -29,6 +30,7 @@ const routes: Routes = [
       {path:'upload-property/:id', component: PropertyUploadComponent},//PreventUnsavedChangesGuard needed to be mount here, I need to go on so I let this technical debt (117)
       {path:'properties', component: PropertyListComponent},
       {path:'properties/:id', component: PropertyDetailComponent},
+      {path:'property-edit/:id', component: PropertyEditComponent},
       {path:'lists', component: ListsComponent},
       {path:'messages', component: MessagesComponent},
       //{path:''}
