@@ -66,7 +66,6 @@ export class PropertyDetailComponent implements OnInit {
   
   getAgentUsername(id){
 
-    console.log('file: property-detail.component.ts, method getAgentUsername, id: ' + id);
       
     this.agentService.getUserById(id)
       .subscribe(username => {

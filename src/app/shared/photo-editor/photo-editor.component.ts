@@ -107,8 +107,6 @@ export class PhotoEditorComponent implements OnInit, OnChanges {
 
         if(this.property !== undefined){
 
-
-          console.log('do something with the property');
           const photo: Photo = JSON.parse(response);
 
           if(this.property.photos === null){

@@ -62,8 +62,6 @@ export class AgentEditComponent implements OnInit, SimpleChange{
 
   udateAgent(){
 
-    console.log('entering the method updateAgent');
-
     this.agentService.updateAgent(this.agent).subscribe(() => {
 
         this.toastr.success('Perfil Actualizado Exitosamente.');

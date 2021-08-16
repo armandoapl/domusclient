@@ -1,9 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Agent } from '../_models/Agent';
+import { PaginatedResult } from '../_models/paginations';
 import { User } from '../_models/User';
 
 @Injectable({
@@ -12,19 +13,31 @@ import { User } from '../_models/User';
 export class AgentsService {
   baseUrl = environment.apiUrl;
   agents: Agent [] = [];
+  paginatedResult: PaginatedResult<Agent[]> = new PaginatedResult<Agent[]>();
 
   constructor(private http: HttpClient) { }
 
-  getAgents() {
-    if(this.agents.length > 0) 
-      return of(this.agents); // te fo operator (brought from RSJX) is making it's parameter an observable of($parameter)
+  getAgents(page?: number , itemsPerPage?: number) {
+    // if(this.agents.length > 0) 
+    //   return of(this.agents); // te fo operator (brought from RSJX) is making it's parameter an observable of($parameter)
 
-    return this.http.get<Agent[]>(this.baseUrl + 'users').pipe(
-      map(agents => {
-        this.agents = agents;
-        return agents;
+    let params = new HttpParams();
+
+    if(params !== null && itemsPerPage !== null){
+      params = params.append("pageNumber", page.toString());
+      params = params.append("pageSize", itemsPerPage.toString());
+    }
+
+    return this.http.get<Agent[]>(this.baseUrl +'users', {observe: 'response', params}).pipe(
+      map(response =>{
+        this.paginatedResult.result = response.body;
+        if(response.headers.get('Pagination') !== null ) {
+          this.paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+        }
+        return this.paginatedResult;
       })
     );
+
   }
 
   getAgent(userName: string){

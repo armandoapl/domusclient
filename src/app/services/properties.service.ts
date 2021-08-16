@@ -62,7 +62,6 @@ export class PropertiesService {
       Address: propertyToCreate.address
 
     };
-        console.log('entering the service ', objectSent);
     return this.http.post<Property>(this.baseUrl + 'properties', objectSent);
   }
 

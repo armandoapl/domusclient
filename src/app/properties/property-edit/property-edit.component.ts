@@ -43,7 +43,6 @@ export class PropertyEditComponent implements OnInit {
         preview: false
       }
     ];
-    console.log(this.property);
     //this.galleryImages = this.getImages();
   }
   
