@@ -5,7 +5,7 @@ import { AgentDetailComponent } from './agent-detail/agent-detail.component';
 import { AgentEditComponent } from './agent-edit/agent-edit.component';
 import { AgentListComponent } from './agent-list/agent-list.component';
 import { SharedModule } from '../shared/shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PropertiesModule } from '../properties/properties.module';
 
@@ -23,7 +23,8 @@ import { PropertiesModule } from '../properties/properties.module';
     SharedModule,
     FormsModule,
     RouterModule,
-    PropertiesModule
+    PropertiesModule,
+    ReactiveFormsModule ,
   ],
   exports: [
     SharedModule,

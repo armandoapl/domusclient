@@ -1,5 +1,28 @@
-<div class="row">
-    <div *ngFor="let agent of agents$ | async" class="col-2 m-3">
+<div class="row" *ngIf="agents">
+    <div *ngFor="let agent of agents" class="col-2 m-3">
         <app-agent-card [agent]="agent"></app-agent-card>
     </div>
+    <div class="d-flex justify-content-center" *ngIf='pagination'>
+        <pagination 
+            [boundaryLinks]="true" 
+            [totalItems]="pagination.TotalItems"
+            [itemsPerPage]="pagination.ItemsPerPage"
+            [(ngModel)]="pagination.CurrentPage"
+            (pageChanged)="pageChanged($event)"
+            previousText="&lsaquo;" 
+            nextText="&rsaquo;" 
+            firstText="&laquo;" 
+            lastText="&raquo;">
+        </pagination>
+    </div>
 </div>
+
+
+
+
+<!--  -->
+
+<!--Hello there Armando from the future, here you have to put a button or something
+            To let's say pop up a modal with a textbox to fill with the adress the user is looking for
+            and make this thing able to filter by address.
+        -->

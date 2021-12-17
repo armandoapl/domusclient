@@ -1,9 +1,12 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { PaginatedResult } from '../_models/paginations';
 import { Property } from '../_models/Property';
+import { UserPropertyParams } from '../_models/userPropertyParams';
+import { SharedMethodService } from './shared-method.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,20 +22,36 @@ export class PropertiesService {
 
   properties: Property[] = [];
 
+  // paginatedResult: PaginatedResult<Property[]> = new PaginatedResult<Property[]>();
+
   baseUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private sharedMethodService: SharedMethodService) { }
 
-  getProperties() {
-    if(this.properties.length > 0)
-      return of(this.properties);
+  getProperties(UserPropertyParams: UserPropertyParams ) {
 
-    return this.http.get<Property[]>(this.baseUrl + 'properties').pipe(
-      map(properties => {
-        this.properties = properties;
-        return properties;
-      })
-    );
+    let params = this.sharedMethodService.
+    getPaginationHeaders(UserPropertyParams.pageNumber, UserPropertyParams.pageSize, UserPropertyParams.city);
+    
+    return this.sharedMethodService
+    .getPaginatedResult<Property[]>(params, this.baseUrl+'properties');
+    // let params =  new HttpParams();
+
+    // if(params!== null && itemsPerPage!== null) {
+    //   params = params.append('PageNumber', page.toString());
+    //   params = params.append('PageSize',itemsPerPage.toString());
+    // }
+    // return this.http.get<Property[]>(this.baseUrl + 'properties', {observe:'response', params}).pipe(
+    //   map(response => {
+    //     this.paginatedResult.result = response.body;
+
+    //     if(response.headers.get('Pagination') !== null ){
+    //       this.paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+    //       console.log('this is in the service pagination', this.paginatedResult);
+    //     }
+    //     return this.paginatedResult;
+    //   })
+    // );
   }
 
   getProperty(id: number){

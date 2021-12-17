@@ -8,6 +8,8 @@ import { TextInputComponent } from 'src/app/_forms/text-input/text-input.compone
 import { DateInputComponent } from 'src/app/_forms/date-input/date-input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
     FileUploadModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxGalleryModule
+    NgxGalleryModule,
+    PaginationModule.forRoot()
   ], 
   exports: [
     TabsModule,
@@ -30,7 +33,8 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
     PhotoEditorComponent,
     TextInputComponent,
     DateInputComponent,
-    NgxGalleryModule
+    NgxGalleryModule,
+    PaginationModule
   ]
 })
 export class SharedModule { }

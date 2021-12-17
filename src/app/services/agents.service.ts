@@ -6,6 +6,8 @@ import { environment } from 'src/environments/environment';
 import { Agent } from '../_models/Agent';
 import { PaginatedResult } from '../_models/paginations';
 import { User } from '../_models/User';
+import { UserPropertyParams } from '../_models/userPropertyParams';
+import { SharedMethodService } from './shared-method.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,35 +15,19 @@ import { User } from '../_models/User';
 export class AgentsService {
   baseUrl = environment.apiUrl;
   agents: Agent [] = [];
-  paginatedResult: PaginatedResult<Agent[]> = new PaginatedResult<Agent[]>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private sharedMethodService: SharedMethodService) { }
 
-  getAgents(page?: number , itemsPerPage?: number) {
-    // if(this.agents.length > 0) 
-    //   return of(this.agents); // te fo operator (brought from RSJX) is making it's parameter an observable of($parameter)
+  // te it's parameter an observable of($parameter)
+  getAgents(userParams: UserPropertyParams) {
 
-    let params = new HttpParams();
+    let params = this.sharedMethodService.getPaginationHeaders(userParams.pageNumber, userParams.pageSize, userParams.city);
 
-    if(params !== null && itemsPerPage !== null){
-      params = params.append("pageNumber", page.toString());
-      params = params.append("pageSize", itemsPerPage.toString());
-    }
-
-    return this.http.get<Agent[]>(this.baseUrl +'users', {observe: 'response', params}).pipe(
-      map(response =>{
-        this.paginatedResult.result = response.body;
-        if(response.headers.get('Pagination') !== null ) {
-          this.paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
-        }
-        return this.paginatedResult;
-      })
-    );
+    return this.sharedMethodService.getPaginatedResult<Agent[]>(params,this.baseUrl+'users');
 
   }
 
   getAgent(userName: string){
-
     const agent = this.agents.find(agent => agent.userName === userName);
     if(agent !== undefined)
       return of(agent);
@@ -80,5 +66,10 @@ export class AgentsService {
   deletePhoto(photoId: number){
     return this.http.delete(this.baseUrl + 'users/delete-photo/' + photoId);
   }
+
+  getCities() {
+    return this.http.get(this.baseUrl + 'users/get-cities');
+  }
+  
 
 }
